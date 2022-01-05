@@ -1,4 +1,5 @@
-import { AddToCart } from "../../actions/Cart"
+import { AddToCart, RemoveFromCart } from "../../actions/Cart"
+import CartItem from "../../components/shop/CartItem"
 import cartItem from "../../user/cartItem"
 
 const initialState = {
@@ -34,6 +35,26 @@ export default (state = initialState, action) => {
                 totalAmount: state.totalAmount + productPrice
             }
         }
+        case RemoveFromCart: {
+            const selectedCartItem = state.items[action.pid]
+            const currQty = selectedCartItem.quantity
+            if (currQty > 1){
+                const updatedCartItem = new CartItem(selectedCartItem.quantity - 1,
+                    selectedCartItem.productPrice,
+                    selectedCartItem.productTitle,
+                    selectedCartItem.sum - selectedCartItem.productPrice)
+                    updatedCartItem = {...state.items, [action.pid]: updatedCartItem}
+            }else {
+                const updatedCartItem = {...state.items}
+                delete updatedCartItem[action.pid]
+            }
+            return {
+                ...state,
+                items: updatedCartItem,
+                totalAmount: state.totalAmount - selectedCartItem.productPrice
+            }
+        }
+        
     }
     return state
 }

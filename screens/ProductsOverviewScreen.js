@@ -47,8 +47,20 @@ const ProductsOverviewScreen = props => {
     
 }
 
-ProductsOverviewScreen.navigationOptions = {
+ProductsOverviewScreen.navigationOptions = cartData => {
+    return {
     headerTitle: 'All Products',
+    headerLeft: (
+    <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item 
+        title = "Menu"
+        iconName='md-menu'
+        onPress = {() => {
+            cartData.navigation.toggleDrawer()
+        }}
+        />
+    </HeaderButtons>
+    ),
     headerStyle: {
         backgroundColor: '#f4511e',
       },
@@ -60,10 +72,11 @@ ProductsOverviewScreen.navigationOptions = {
           <Item title='Cart' 
           iconName='cart'
           onPress = {() => {
-              navData.navigation.navigate('Cart')
+              cartData.navigation.navigate('Cart')
           }}
             />
       </HeaderButtons>
+    }
 }
 
 export default ProductsOverviewScreen
