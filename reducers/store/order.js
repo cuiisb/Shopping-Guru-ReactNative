@@ -1,4 +1,4 @@
-import Order from "../../user/order"
+import {AddOrder} from "../../user/order"
 
 const initialState = {
     orders: []
@@ -16,13 +16,15 @@ export default (state = initialState, action) => {
                 action.orderData.amount,
                 new Date()
                 )
+                return { 
+                    ...state,
+                    orders: state.orders.concat(newOrder)
+                }
     }
+    return state
     // copying state so that u dont lose it, concat adds new item to array ,
     // adding new array means new order 
-    return { 
-        ...state,
-        orders: state.orders.concat(newOrder)
-    }
+    
 
 
 }

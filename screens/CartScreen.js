@@ -7,7 +7,7 @@ import {  Item, HeaderButtons } from 'react-navigation-header-buttons';
 
 import CartItem from '../components/shop/CartItem'
 import * as cartActions from '../actions/Cart'
-import * as ordersAction from '../actions/order'
+import * as ordersActions from '../actions/order'
 
 const CartScreen = props => {
     const cartTotalAmount = useSelector(state => state.cart.totalAmount)
@@ -24,7 +24,7 @@ const CartScreen = props => {
                 sum : state.cart.items[key].sum
             })
         }
-        return newCartItems.sort((x , y) => x.productId > blur.productId ? 1 : -1 )
+        return newCartItems.sort((x , y) => x.productId > y.productId ? 1 : -1 )
     })
     const dispatch = useDispatch()
         
@@ -38,7 +38,7 @@ const CartScreen = props => {
             color = 'goldenrod'
             title = 'Order Now'
             onPress={() => {
-                dispatch(ordersAction.addOrder(cartItems, cartTotalAmount))
+                dispatch(ordersActions.addOrder(cartItems, cartTotalAmount))
             }}
             />
             </View>
@@ -49,6 +49,7 @@ const CartScreen = props => {
             quantity = {itemData.item.quantity}
             title = {itemData.item.productTitle}
             amount = {itemData.item.sum}
+            deleteable
             onRemove = {() => {
                 dispatch(cartActions.RemoveFromCart(itemData.item.productId))
             }}
@@ -81,7 +82,6 @@ const styles = StyleSheet.create({
         
     },
     dataText: {
-        fontFamily: 'open-sans-bold',
         fontSize: 19
     },
     amount: {

@@ -1,21 +1,26 @@
 import React from 'react'
-import { View, Text, Image, Styleshseet, Button } from 'react-native'
+import { View, Text, Image, StyleSheet, Button, TouchableOpacity } from 'react-native'
+import colors from '../constants/colors'
 
 const ProductItem = props => {
+
+    let Touchcomp = TouchableOpacity
+
     return (
         <View style={styles.prod}>
-            <Image style={styles.img} src={{ uri: props.image }} />
+            <Touchcomp onpress = {props.onSelect} useForeground>
+            <Image style={styles.img} source={{ uri: props.image }} />
             <Text style={styles.title}>{props.title}</Text>
-            <Text style={styles.price}>{props.price.tofixed(3)}</Text>
+            {/* <Text style={styles.price}>{props.price.tofixed(3)}</Text> */}
             <View style={styles.btn}>
-                <Button title="View Details" onPress={props.ViewDetail} />
-                <Button title="To Cart" onPress={props.AddToCart} />
+                {props.children}
             </View>
+            </Touchcomp>
         </View>
     )
 }
 
-const styles = Styleshseet.create({
+const styles = StyleSheet.create({
     prod: {
         shadowColor: 'black',
         shadowOpacity: 0.27,
@@ -28,8 +33,8 @@ const styles = Styleshseet.create({
         margin: 19
     },
     img: {
-        width: '60%',
-        height: '60%'
+        width: '100%',
+        height: '75%'
     },
     title: {
         fontSize: 19,
@@ -43,6 +48,8 @@ const styles = Styleshseet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+        paddingHorizontal: 20,
+        height: 40
     }
 })
 

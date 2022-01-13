@@ -7,7 +7,7 @@ import {
     Item
   } from 'react-navigation-header-buttons';
 
-import Colors from '../constants/colors'
+import Colors from '../components/constants/colors'
 import { Platform } from 'react-native'
 
 const CustomHeaderButton = props => {

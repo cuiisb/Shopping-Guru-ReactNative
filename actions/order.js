@@ -1,7 +1,8 @@
 export const AddOrder = 'AddOrder'
 
 export const addOrder = (cartItems, totalAmount) => {
-    return { type: AddOrder,
-    orderDate: { items: cartItems, amount: totalAmount}
+    return {
+        type: AddOrder,
+        orderData: { items: cartItems, amount: totalAmount }
     }
 }

@@ -7,9 +7,9 @@ export const addToCart = product => {
         product: product
     }
 }
-export const DeleteFromCart = productId => {
+export const removeFromCart = productId => {
     return {
-        type: DeleteFromCart,
+        type: RemoveFromCart,
         prodId: productId
     }
 }
