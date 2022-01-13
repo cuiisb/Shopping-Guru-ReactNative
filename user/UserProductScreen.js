@@ -52,30 +52,35 @@ const UserProductScreen = props => {
         
 
 
-// UserProductsScreren.navigationOptions = {
-//     headerTitle: 'Your Products',
-//     headerLeft: (
-//         <HeaderButtons HeaderButtonComponent={HeaderButton}>
-//             <Item
-//                 title="Menu"
-//                 iconName='md-menu'
-//                 onPress={() => {
-//                     cartData.navigation.toggleDrawer()
-//                 }}
-//             />
-//         </HeaderButtons>
-//     ),
-//     headerRight: (
-//         <HeaderButtons HeaderButtonComponent={HeaderButton}>
-//         <Item
-//             title="Add"
-//             iconName='md-create'
-//             onPress={() => {
-//                 cartData.navigation.navigate('EditProduct')
-//             }}
-//         />
-//     </HeaderButtons>
-//     )
-//}
+UserProductScreen.navigationOptions = cartData => {
+    return {
+    headerTitle: 'Your Products',
+    headerLeft: (
+        <HeaderButtons HeaderButtonComponent={HeaderButton}>
+            <Item
+                title="Menu"
+                iconName='md-menu'
+                onPress={() => {
+                    cartData.navigation.toggleDrawer()
+                }}
+            />
+        </HeaderButtons>
+    ),
+    headerRight: (
+        <Button tile ='create'
+        onPress = {() => cartData.navigation.navigate('EditProduct')}
+        /> 
+        // <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        // <Item
+        //     title="Add"
+        //     iconName='md-create'
+        //     onPress={() => {
+        //         cartData.navigation.navigate('EditProduct')
+        //     }}
+        // />
+    //</HeaderButtons>
+    )
+    }
+}
 
 export default UserProductScreen

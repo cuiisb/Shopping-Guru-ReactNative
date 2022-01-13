@@ -15,13 +15,13 @@ const CartScreen = props => {
        
         const newCartItems = []
         
-        for (const key in state.cart.items){
+        for (const key in state.cart.item){
             newCartItems.push({
                 productId: key,
-                productTitle: state.cart.items[key].productTitle,
-                productPrice: state.cart.items[key].productPrice,
-                quantity: state.cart.items[key].quantity,
-                sum : state.cart.items[key].sum
+                productTitle: state.cart.item[key].productTitle,
+                productPrice: state.cart.item[key].productPrice,
+                quantity: state.cart.item[key].quantity,
+                sum : state.cart.item[key].sum
             })
         }
         return newCartItems.sort((x , y) => x.productId > y.productId ? 1 : -1 )

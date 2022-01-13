@@ -1,8 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native';
-import {createStore, combineReducers} from 'redux'
+import {createStore, combineReducers, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
+import ReduxThunk from 'redux-thunk'
+
+
 import productsReducer from './reducers/store/products'
 import ShopNav from './navigation/ShopNav';
 import cartReducer from './reducers/store/Cart'
@@ -17,7 +20,8 @@ const rootReducer = combineReducers({
 
 })
 
-const store = createStore(rootReducer)
+// enable package to do action in products
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk))
 
 export default function App() {
   return (

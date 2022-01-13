@@ -33,14 +33,14 @@ const EditProductScreen = props => {
         props.navigation.setParams({ submit: submitHandler })
     }, [submitHandler])
 
-    const titleChange = text => {
-        if (text.length === 0){
-            setTitleIsValid(false)
-        } else{
-           setTitleIsValid(true) 
-        }
-        setTitle(text)
-    }
+    // const titleChange = text => {
+    //     if (text.length === 0){
+    //         setTitleIsValid(false)
+    //     } else{
+    //        setTitleIsValid(true) 
+    //     }
+    //     setTitle(text)
+    // }
 
     return (
         <ScrollView>

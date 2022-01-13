@@ -1,3 +1,4 @@
+import { SetOrder } from "../../actions/order"
 import {AddOrder} from "../../user/order"
 
 const initialState = {
@@ -9,12 +10,16 @@ const initialState = {
 // initial state that receives an action that is all handled by redux
 export default (state = initialState, action) => {
     switch (action.type) {
+        case SetOrder:
+            return {
+                orders: action.orders
+            }
         case AddOrder:
             const newOrder = new Order(
-                new Date().toString(),
+                action.orderData.id,
                 action.orderData.items,
                 action.orderData.amount,
-                new Date()
+                action.orderData.date
                 )
                 return { 
                     ...state,
